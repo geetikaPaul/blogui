@@ -23,14 +23,14 @@ class App extends Component {
 	        const categories = response.data;
 	        this.setState({categories:categories});
 	        this.setState({selectedCategory:categories[0]});
-	      });
-		
 
-	    axios.get('http://localhost:50455/api/values/GetByCategory?selectedCategory='+this.state.selectedCategory)
-	      .then(response => {
+	    	axios.get('http://localhost:50455/api/values/GetByCategory?selectedCategory='+this.state.selectedCategory)
+	      	.then(response => {
 	        const posts = response.data;
 	        this.setState({posts: posts});
 	      });
+	    });		
+
   	}
 
   	componentDidUpdate(prevProps, prevState){
