@@ -22,3 +22,7 @@
 .CategoryFrame-li-a:hover {
   background-color: #111;
 }
+
+.CategoryFrame-li-a.active {
+  background-color: #000;
+}

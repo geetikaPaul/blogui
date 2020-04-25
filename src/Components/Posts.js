@@ -7,9 +7,16 @@ class Posts extends Component{
 		
 		return(
 			<div>
-				{this.props.contents.map(content => (
-					<Post content = {content} showExtendedBody = {this.props.showExtendedBody} extendedBodyDisplay = {this.props.extendedBodyDisplay}/>
-				))}
+				{
+					this.props.contents && this.props.contents.length>0 ?  
+					this.props.contents.map(content => (
+						<Post 
+							content = {content} 
+							showExtendedBody = {this.props.showExtendedBody} 
+							extendedBodyDisplay = {this.props.extendedBodyDisplay}/>
+					)) :
+					console.log('no data')
+				}
 			</div>
 		)
 	}
