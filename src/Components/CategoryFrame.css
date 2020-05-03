@@ -26,3 +26,7 @@
 .CategoryFrame-li-a.active {
   background-color: #000;
 }
+
+.CategoryFrame-ul > li:last-child{
+  float: right;
+}

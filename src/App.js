@@ -10,7 +10,9 @@ class App extends Component {
 		showExtendedBody:-1,
 		posts:[],
 		categories:[],
-		selectedCategory:""
+		selectedCategory:"",
+		loading:true,
+		resumeLink:""
 	}
 
 	extendedBodyDisplayHandler = (id) => {
@@ -28,8 +30,14 @@ class App extends Component {
 	      	.then(response => {
 	        const posts = response.data;
 	        this.setState({posts: posts});
+	        this.setState({loading: false});
 	      });
-	    });		
+	    });	
+
+	    axios.get('https://apiservicecore.herokuapp.com/api/values/GetResume')
+	      	.then(response => {
+	        this.setState({resumeLink: response.data});
+	      });	
 
   	}
 
@@ -60,9 +68,10 @@ class App extends Component {
 	      )}) : <div className="NoData">No data Available</div>
 	   
 		  return (
-		    <div className="App">
-		      <CategoryFrame categories = {this.state.categories} categoryChangeHandler={this.categoryChangeHandler} />
-		      {posts}
+		    <div className="App">		    	
+		      <CategoryFrame categories = {this.state.categories} resumeLink = {this.state.resumeLink} categoryChangeHandler={this.categoryChangeHandler} />
+		      {this.state.loading ? <div className="NoData"> Loading... </div> : null}
+		      {!this.state.loading ? posts : null}
 		    </div>
 		  );
 	}

@@ -12,6 +12,9 @@ class CategoryFrame extends Component{
 							</a>
 						</li>
 						))}
+						<li>
+							<a className="CategoryFrame-li-a" target="_blank" href={this.props.resumeLink}>Resume</a>
+						</li>
 				</ul>
 			</div>
 		)
