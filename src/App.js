@@ -18,13 +18,13 @@ class App extends Component {
 	}
 
 	componentDidMount(){
-		axios.get('http://localhost:50455/api/values/GetCategories')
+		axios.get('https://apiservicecore.herokuapp.com/api/values/GetCategories')
 	      .then(response => {
 	        const categories = response.data;
 	        this.setState({categories:categories});
 	        this.setState({selectedCategory:categories[0]});
 
-	    	axios.get('http://localhost:50455/api/values/GetByCategory?selectedCategory='+this.state.selectedCategory)
+	    	axios.get('https://apiservicecore.herokuapp.com/api/values/GetByCategory?selectedCategory='+this.state.selectedCategory)
 	      	.then(response => {
 	        const posts = response.data;
 	        this.setState({posts: posts});
@@ -35,7 +35,7 @@ class App extends Component {
 
   	componentDidUpdate(prevProps, prevState){
   		if (prevState.selectedCategory!== this.state.selectedCategory) {
-		    axios.get('http://localhost:50455/api/values/GetByCategory?selectedCategory='+this.state.selectedCategory)
+		    axios.get('https://apiservicecore.herokuapp.com/api/values/GetByCategory?selectedCategory='+this.state.selectedCategory)
 		      .then(response => {
 		        const posts = response.data;
 		        this.setState({posts: posts});
